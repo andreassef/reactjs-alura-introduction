@@ -22,11 +22,18 @@ class App extends Component {
     this.setState(newState)
   }
 
+  deleteNote(index) {
+    let arrayOfNotes = this.state.notes
+    arrayOfNotes.splice(index, 1);
+    this.setState({notes: arrayOfNotes})
+    console.log('Note was delete')
+  }
+
   render() {
     return (
       <section className="conteudo">
         <RegisterForm createCard = {this.createCard.bind(this)} />
-        <Notes notes={this.state.notes} />
+        <Notes deleteNote={this.deleteNote.bind(this)} notes={this.state.notes} />
       </section>
     );
   }
