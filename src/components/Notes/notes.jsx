@@ -14,7 +14,13 @@ class Notes extends Component {
                     return (
                         <li className='lista-notas_item' key={index}>
                             
-                            <CardNotes index={index} deleteNote={this.props.deleteNote} title={categoria.title} text={categoria.text} />
+                            <CardNotes 
+                                index={index} 
+                                deleteNote={this.props.deleteNote} 
+                                title={categoria.title} 
+                                text={categoria.text}
+                                categoria={categoria.categoria} 
+                            />
                         </li>
                     )
                 })}
