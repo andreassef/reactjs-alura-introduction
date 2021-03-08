@@ -7,6 +7,12 @@ class RegisterForm extends Component {
         super(props)
         this.titulo = '';
         this.text = '';
+        this.categoria = "Sem categoria";
+    }
+
+    handleMundancaCategoria(e) {
+        e.stopPropagation();
+        this.categoria = e.target.value;
     }
 
     handleTitle = (e) => {
@@ -24,12 +30,18 @@ class RegisterForm extends Component {
     createNote(e) {
         e.preventDefault();
         e.stopPropagation();
-        this.props.createCard(this.titulo, this.text)
+        this.props.createCard(this.titulo, this.text, this.categoria)
     }
 
     render() {
         return (
             <form className='form-cadastro' onSubmit={this.createNote.bind(this)}>
+                <select onChange={this.handleMundancaCategoria.bind(this)} className="form-cadastro_input">
+                    <option>Sem Categoria</option>
+                    {this.props.categorias.map((categoria) => {
+                        return <option>{categoria}</option>
+                    })}
+                </select>
                 <input 
                     className='form-cadastro_input' 
                     type="text" 
