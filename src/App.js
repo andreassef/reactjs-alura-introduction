@@ -15,8 +15,8 @@ class App extends Component {
     }
   }
 
-  createCard(title, text){
-    const newNote = {title, text};
+  createCard(title, text, categoria){
+    const newNote = {title, text, categoria};
     const newArrayNotes = [...this.state.notes, newNote];
     const newState = {
       notes: newArrayNotes
@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <section className="conteudo">
-        <RegisterForm createCard = {this.createCard.bind(this)} />
+        <RegisterForm categorias={this.state.categorias} createCard = {this.createCard.bind(this)} />
         <main className="main-content"> 
           <CategoryList 
             adicionarCategoria={this.adicionarCategoria.bind(this)}
