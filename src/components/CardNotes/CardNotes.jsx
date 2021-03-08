@@ -10,7 +10,6 @@ class CardNotes extends Component {
     delete() {
         const indice = this.props.index
         this.props.deleteNote(indice)
-
     }
 
     render() {
@@ -19,6 +18,7 @@ class CardNotes extends Component {
                 <head className="card-nota_cabecalho">
                     <h3>{this.props.title}</h3>
                     <DeleteSVG onClick={this.delete.bind(this)} />
+                    <h4>{this.props.categoria}</h4>
                 </head>
                 <p className="card-nota_texto">{this.props.text}</p>
             </section> 
