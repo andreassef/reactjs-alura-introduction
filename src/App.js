@@ -23,7 +23,7 @@ class App extends Component {
           <CategoryList 
             adicionarCategoria={this.categorias.adicionarCategoria.bind(this.categorias)}
             categorias={this.categorias} />
-          <Notes deleteNote={this.notas.apagarNota} notes={this.notas} />
+          <Notes deleteNote={this.notas.apagarNota.bind(this.notas)} notes={this.notas} />
         </main>
       </section>
     );
