@@ -8,6 +8,15 @@ class RegisterForm extends Component {
         this.titulo = '';
         this.text = '';
         this.categoria = "Sem categoria";
+        this.state = {categorias: []}
+    }
+
+    componentDidMount() {
+        this.props.categorias.inscrever(this._novasCategorias.bind(this));
+    }
+
+    _novasCategorias(categorias) {
+        this.setState({...this.state, categorias});
     }
 
     handleMundancaCategoria(e) {
@@ -38,8 +47,8 @@ class RegisterForm extends Component {
             <form className='form-cadastro' onSubmit={this.createNote.bind(this)}>
                 <select onChange={this.handleMundancaCategoria.bind(this)} className="form-cadastro_input">
                     <option>Sem Categoria</option>
-                    {this.props.categorias.map((categoria) => {
-                        return <option>{categoria}</option>
+                    {this.state.categorias.map((categoria, index) => {
+                        return <option key={index}>{categoria}</option>
                     })}
                 </select>
                 <input 
